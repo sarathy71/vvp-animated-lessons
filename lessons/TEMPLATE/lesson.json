@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-XX-name",
+  "seriesKey": "appu",
+  "weekNumber": 99,
+  "title": "REPLACE: Lesson title",
+  "headerSubtitle": "REPLACE: short course subtitle",
+  "challengeCaption": "REPLACE: challenge problem caption",
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/intro_01.jpg",
+        "title": "REPLACE intro 1",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/intro_02.jpg",
+        "title": "REPLACE intro 2",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/intro_03.jpg",
+        "title": "REPLACE intro 3",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/intro_04.jpg",
+        "title": "REPLACE intro 4",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/intro_05.jpg",
+        "title": "REPLACE intro 5",
+        "sub": "REPLACE"
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/day_01.jpg",
+        "title": "REPLACE day 1",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/day_02.jpg",
+        "title": "REPLACE day 2",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/day_03.jpg",
+        "title": "REPLACE day 3",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/day_04.jpg",
+        "title": "REPLACE day 4",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/day_05.jpg",
+        "title": "REPLACE day 5",
+        "sub": "REPLACE"
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/finale_01.jpg",
+        "title": "REPLACE finale 1",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/finale_02.jpg",
+        "title": "REPLACE finale 2",
+        "sub": "REPLACE"
+      },
+      {
+        "src": "assets/scenes/finale_03.jpg",
+        "title": "REPLACE finale 3",
+        "sub": "REPLACE"
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "assets/audio/voice/appu_intro.wav",
+      "tilliIntro": "assets/audio/voice/tilli_intro.wav",
+      "appuHelp": "assets/audio/voice/appu_help.wav",
+      "tilliInstruction": "assets/audio/voice/tilli_instruction.wav",
+      "recitalCheer": "assets/audio/voice/recital_cheer.wav",
+      "dailyComplete": "assets/audio/voice/daily_complete.wav",
+      "appuChallengeComplete": "assets/audio/voice/appu_challenge_complete.wav",
+      "tilliThanks": "assets/audio/voice/tilli_thanks.wav"
+    }
+  }
+}

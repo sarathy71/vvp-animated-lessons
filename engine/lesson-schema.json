@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sloka Adventure Lesson v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "lessonId",
+    "seriesKey",
+    "weekNumber",
+    "title",
+    "practice",
+    "video",
+    "progressIcon",
+    "scenes",
+    "audio"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "lessonId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seriesKey": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,50}$"
+    },
+    "weekNumber": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "title": {
+      "type": "string"
+    },
+    "headerSubtitle": {
+      "type": "string"
+    },
+    "challengeCaption": {
+      "type": "string"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "practice": {
+      "type": "object",
+      "required": [
+        "recitalsPerDay",
+        "challengeDays"
+      ],
+      "properties": {
+        "recitalsPerDay": {
+          "const": 5
+        },
+        "challengeDays": {
+          "const": 5
+        }
+      },
+      "additionalProperties": false
+    },
+    "video": {
+      "type": "string"
+    },
+    "progressIcon": {
+      "type": "string"
+    },
+    "scenes": {
+      "type": "object",
+      "required": [
+        "intro",
+        "days",
+        "finale"
+      ],
+      "properties": {
+        "intro": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/scene"
+          }
+        },
+        "days": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/$defs/scene"
+          }
+        },
+        "finale": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/scene"
+          }
+        }
+      }
+    },
+    "audio": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "scene": {
+      "type": "object",
+      "required": [
+        "src",
+        "title",
+        "sub"
+      ],
+      "properties": {
+        "src": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sub": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

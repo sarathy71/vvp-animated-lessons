@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sloka Adventure</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <header class="header">
+    <div><div class="kicker">Appu & Tilli</div><h1 id="lessonTitle">Sloka Adventure</h1><div id="lessonSubtitle" class="subtitle"></div></div>
+    <div id="badge" class="badge">Sign in</div>
+  </header>
+  <main class="card">
+    <section id="login" class="login">
+      <h2>Who is playing?</h2><div class="subtitle">Enter the email used for your Sloka class.</div>
+      <form id="loginForm"><label for="email">Class email</label><input id="email" type="email" autocomplete="email" required placeholder="parent@example.com"><button id="loginBtn" class="btn primary wide" type="submit">Continue</button><div id="loginErr" class="err"></div></form>
+    </section>
+    <section id="game" class="hidden">
+      <div class="game-meta"><div id="studentHud" class="greeting">Hi!</div><div id="weekHud" class="meta-count">0 of 5</div></div>
+      <div class="viewer"><div class="frame">
+        <img id="sceneImg" class="scene-img" alt="Sloka adventure scene">
+        <div id="slokaText" class="sloka-text hidden" lang="sa-Latn" aria-live="polite"></div>
+        <div id="videoInset" class="video-inset" role="button" aria-label="Play lesson video"><video id="lessonVideo" preload="metadata" playsinline></video><div class="video-overlay"><div id="videoIcon" class="video-icon">▶</div></div></div>
+        <div id="flyingBall" class="flying-ball hidden" aria-hidden="true"></div>
+        <div id="toast" class="toast"></div>
+        <div id="introCaption" class="intro-caption hidden" aria-live="polite"></div>
+      </div></div>
+      <div class="daily-practice-row"><div id="dailyBalls" class="daily-balls" aria-label="Daily practice progress"></div></div>
+      <div class="story-panel"><div id="storyTitle" class="story-title"></div><div id="storySub" class="story-sub"></div></div>
+      <div id="weeklyProgress" class="weekly-progress"></div>
+      <div class="progress"><div class="proghead"><span>This challenge</span><span id="countLabel">0 / 5</span></div><div id="track" class="track"></div></div>
+      <div class="tools"><div></div><div><button id="previewBtn" class="btn secondary" type="button">▶ Preview full story</button><button id="soundBtn" class="btn secondary" type="button">🔊 Sound on</button><button id="reloadBtn" class="btn secondary" type="button">Reload</button><button id="changeBtn" class="btn secondary" type="button">Change student</button></div></div>
+      <audio id="sfxBall" preload="auto"></audio><audio id="sfxVictory" preload="auto"></audio><audio id="voicePlayer" preload="auto"></audio>
+    </section>
+  </main>
+</div>
+<script src="runtime-config.js"></script>
+<script src="lesson-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

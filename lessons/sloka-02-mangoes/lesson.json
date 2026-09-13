@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-02-mangoes",
+  "seriesKey": "appu",
+  "weekNumber": 2,
+  "title": "The Five Lost Mangoes",
+  "headerSubtitle": "Five complete recitals fill the five balls. Then today's challenge advances once.",
+  "challengeCaption": "Tilli dropped her mangoes!",
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_01_intro_picnic.jpg",
+        "title": "A sunny picnic",
+        "sub": "Tilli brought 5 mangoes for a picnic."
+      },
+      {
+        "src": "assets/scenes/scene_02_intro_oops.jpg",
+        "title": "Oh no!",
+        "sub": "Oh no! Tilli dropped the mangoes."
+      },
+      {
+        "src": "assets/scenes/scene_03_intro_help.jpg",
+        "title": "Tilli needs help",
+        "sub": "Tilli needs your help."
+      },
+      {
+        "src": "assets/scenes/scene_04_intro_appu.jpg",
+        "title": "Appu has an idea",
+        "sub": "Can you help Tilli find the mangoes?"
+      },
+      {
+        "src": "assets/scenes/scene_05_intro_join.jpg",
+        "title": "You can help",
+        "sub": "You can help by reciting the sloka."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_06_day1_bush.jpg",
+        "title": "Day 1 \u2014 Behind the bush",
+        "sub": "The first mango is found."
+      },
+      {
+        "src": "assets/scenes/scene_07_day2_rock.jpg",
+        "title": "Day 2 \u2014 Near the rock",
+        "sub": "The second mango is found."
+      },
+      {
+        "src": "assets/scenes/scene_08_day3_tree.jpg",
+        "title": "Day 3 \u2014 Under the tree",
+        "sub": "The third mango is found."
+      },
+      {
+        "src": "assets/scenes/scene_09_day4_flowers.jpg",
+        "title": "Day 4 \u2014 By the flowers",
+        "sub": "The fourth mango is found."
+      },
+      {
+        "src": "assets/scenes/scene_10_day5_fence.jpg",
+        "title": "Day 5 \u2014 Near the fence",
+        "sub": "The fifth mango is found."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_11_end_all_found.jpg",
+        "title": "All mangoes found!",
+        "sub": "You found all five mangoes."
+      },
+      {
+        "src": "assets/scenes/scene_12_end_picnic.jpg",
+        "title": "Picnic time!",
+        "sub": "Appu and Tilli can enjoy their picnic."
+      },
+      {
+        "src": "assets/scenes/scene_13_end_keep_going.jpg",
+        "title": "Hooray!",
+        "sub": "Challenge complete."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "assets/audio/voice/appu_intro.wav",
+      "tilliIntro": "assets/audio/voice/tilli_intro.wav",
+      "appuHelp": "assets/audio/voice/appu_help.wav",
+      "tilliInstruction": "assets/audio/voice/tilli_instruction.wav",
+      "recitalCheer": "assets/audio/voice/recital_cheer.wav",
+      "dailyComplete": "assets/audio/voice/daily_complete.wav",
+      "appuChallengeComplete": "assets/audio/voice/appu_challenge_complete.wav",
+      "tilliThanks": "assets/audio/voice/tilli_thanks.wav"
+    }
+  }
+}
