@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slokashri Adventures</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="hub-shell">
+    <section class="hero" aria-labelledby="hub-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Welcome, little explorer!</div>
+        <h1 id="hub-title">Slokashri Adventures</h1>
+        <p>Learn, recite, and go on adventures with Appu and Tilli!</p>
+      </div>
+      <div class="friends" aria-label="Appu and Tilli">
+        <figure class="friend friend-appu">
+          <img src="../sloka-02-mangoes/assets/greetings/appu_hi.jpg" alt="Appu greeting you">
+          <figcaption>Appu</figcaption>
+        </figure>
+        <figure class="friend friend-tilli">
+          <img src="../sloka-02-mangoes/assets/greetings/tilli_hi.jpg" alt="Tilli greeting you">
+          <figcaption>Tilli</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="entryScreen" class="entry-screen" aria-labelledby="entry-title">
+      <div class="entry-card">
+        <div class="entry-star" aria-hidden="true">✦</div>
+        <h2 id="entry-title">Welcome to Slokashri Adventures!</h2>
+        <p>Appu and Tilli are ready to learn with you.</p>
+        <form id="entryForm" novalidate>
+          <label for="classEmail">Enter your class email:</label>
+          <input id="classEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="name@example.com">
+          <button id="continueButton" class="continue-button" type="submit">Continue</button>
+          <div id="entryError" class="entry-error" role="alert" aria-live="polite"></div>
+        </form>
+        <div class="parent-note">A parent or grown-up can help with this step.</div>
+      </div>
+    </section>
+
+    <section id="adventures" class="adventures hidden" aria-labelledby="adventures-title">
+      <div class="player-welcome"><h2 id="playerGreeting">Hi, Friend! 👋</h2><p>Continue your Sloka Adventures with Appu and Tilli.</p></div>
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Choose your story</span>
+          <h2 id="adventures-title">Our Adventures</h2>
+        </div>
+        <span class="journey-count">15 slokas</span>
+      </div>
+      <div id="lessonGrid" class="lesson-grid"></div>
+      <div class="switch-row"><button id="switchStudent" class="switch-student" type="button">Switch student</button></div>
+    </section>
+  </main>
+  <script src="../sloka-02-mangoes/runtime-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

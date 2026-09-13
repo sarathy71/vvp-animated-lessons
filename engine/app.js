@@ -14,6 +14,8 @@ const GREETING_SCENES=Object.freeze({
  tilli:{src:'assets/greetings/tilli_hi.jpg',title:'Hi! I am Tilli!',sub:''}
 });
 function token(){try{return localStorage.getItem(TOKEN_KEY)}catch{return null}}
+function clearPlayerIdentity(){try{localStorage.removeItem(TOKEN_KEY);localStorage.removeItem(NAME_KEY);localStorage.removeItem('sloka_game_email')}catch{}}
+function goToCourseHub(){window.location.replace('../course-hub/')}
 function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toastEl._t);toastEl._t=setTimeout(()=>toastEl.classList.remove('show'),1300)}
@@ -123,7 +125,8 @@ function render(){studentHud.textContent=`Hi, ${playerName}!`;weekHud.textConten
 function isDayComplete(){return lastPracticeDate===today()||dailyRecitals>=5}
 function renderVideoState(){videoInset.classList.remove('done','locked','playing');if(weekProgress>=5){videoInset.classList.add('done','locked');videoIcon.textContent='★'}else if(isDayComplete()){videoInset.classList.add('done','locked');videoIcon.textContent='✓'}else if(running||saving){videoInset.classList.add('locked');videoIcon.textContent='…'}else if(!lessonVideo.paused&&!lessonVideo.ended){videoInset.classList.add('playing');videoIcon.textContent='▶'}else{videoIcon.textContent='▶'}const p=(lessonVideo.duration&&isFinite(lessonVideo.duration))?(lessonVideo.currentTime/lessonVideo.duration)*100:0;videoInset.style.setProperty('--video-progress',`${p}%`)}
 async function signIn(em){const r=await fetch(`${API}/player-start`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em})});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Sign in failed');localStorage.setItem(TOKEN_KEY,j.gameToken);localStorage.setItem(NAME_KEY,j.player?.firstName||'Friend');playerName=j.player?.firstName||'Friend'}
-async function loadState(){const q=new URLSearchParams({seriesKey:L.seriesKey,weekNumber:String(L.weekNumber),practiceDate:today()});const r=await fetch(`${API}/player-progress?${q}`,{headers:{'x-game-token':token()}});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Could not load progress');return j}
+async function loadState(){const q=new URLSearchParams({seriesKey:L.seriesKey,weekNumber:String(L.weekNumber),practiceDate:today()});const r=await fetch(`${API}/player-progress?${q}`,{headers:{'x-game-token':token()}});const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(j.error||'Could not load progress');e.status=r.status;e.code=j.code;throw e}return j}
+async function validateSavedSession(){try{await loadState()}catch(e){if(e.status===401||e.code==='INVALID_SESSION'){clearPlayerIdentity();goToCourseHub()}}}
 function pendingKey(){return `sloka_pending_recital_v1_${token()||'anon'}_${L.lessonId}_${today()}`}
 function getPending(){try{return localStorage.getItem(pendingKey())}catch{return null}}
 function setPending(v){try{v?localStorage.setItem(pendingKey(),v):localStorage.removeItem(pendingKey())}catch{}}
@@ -200,14 +203,14 @@ async function playIntro(){
  running=false;showScene(sceneForProgress(weekProgress));render();
 }
 async function preview(){if(running||saving)return;const saved=sceneForProgress(weekProgress);recitalActive=false;running=true;previewBtn.disabled=true;lessonVideo.pause();renderSlokaText();for(const s of L.scenes.intro){showScene(s);await sleep(750)}for(const s of L.scenes.days){showScene(s);await sleep(750)}for(const s of L.scenes.finale){showScene(s);await sleep(750)}showScene(saved);running=false;previewBtn.disabled=false;render()}
-async function enter(){login.classList.add('hidden');game.classList.remove('hidden');badge.textContent=`Lesson ${L.weekNumber}`;try{playerName=localStorage.getItem(NAME_KEY)||'Friend';const j=await loadState();weekProgress=Number(j.progress?.practice_count||0);lastPracticeDate=j.progress?.last_practice_date||null;dailyRecitals=Math.min(5,Number(j.daily?.recitalCount||0));if(j.daily?.completed)dailyRecitals=5;showScene(sceneForProgress(weekProgress));render();if(weekProgress===0)await playIntro()}catch(e){game.classList.add('hidden');login.classList.remove('hidden');loginErr.textContent=e.message}}
+async function enter(){login.classList.add('hidden');game.classList.remove('hidden');badge.textContent=`Lesson ${L.weekNumber}`;try{playerName=localStorage.getItem(NAME_KEY)||'Friend';const j=await loadState();weekProgress=Number(j.progress?.practice_count||0);lastPracticeDate=j.progress?.last_practice_date||null;dailyRecitals=Math.min(5,Number(j.daily?.recitalCount||0));if(j.daily?.completed)dailyRecitals=5;showScene(sceneForProgress(weekProgress));render();if(weekProgress===0)await playIntro()}catch(e){if(e.status===401||e.code==='INVALID_SESSION'){clearPlayerIdentity();goToCourseHub();return}game.classList.add('hidden');login.classList.remove('hidden');loginErr.textContent=e.message}}
 form.addEventListener('submit',async e=>{e.preventDefault();loginErr.textContent='';loginBtn.disabled=true;try{
  await unlockAudio();
  const entered=email.value.trim();
  if(token()&&!entered)await enter();
  else{await signIn(entered);await enter()}
 }catch(err){loginErr.textContent=err.message}finally{loginBtn.disabled=false}});
-videoInset.addEventListener('click',startVideo);lessonVideo.addEventListener('timeupdate',renderVideoState);lessonVideo.addEventListener('play',()=>{if(!running&&!saving)recitalActive=true;render()});lessonVideo.addEventListener('pause',renderVideoState);lessonVideo.addEventListener('ended',()=>{recitalActive=false;renderSlokaText();handleRecitalComplete()});previewBtn.addEventListener('click',preview);soundBtn.addEventListener('click',()=>setSound(!soundOn));reloadBtn.addEventListener('click',enter);changeBtn.addEventListener('click',()=>{recitalActive=false;lessonVideo.pause();renderSlokaText();localStorage.removeItem(TOKEN_KEY);localStorage.removeItem(NAME_KEY);game.classList.add('hidden');login.classList.remove('hidden');badge.textContent='Sign in'});
+videoInset.addEventListener('click',startVideo);lessonVideo.addEventListener('timeupdate',renderVideoState);lessonVideo.addEventListener('play',()=>{if(!running&&!saving)recitalActive=true;render()});lessonVideo.addEventListener('pause',renderVideoState);lessonVideo.addEventListener('ended',()=>{recitalActive=false;renderSlokaText();handleRecitalComplete()});previewBtn.addEventListener('click',preview);soundBtn.addEventListener('click',()=>setSound(!soundOn));reloadBtn.addEventListener('click',enter);changeBtn.addEventListener('click',()=>{recitalActive=false;lessonVideo.pause();renderSlokaText();clearPlayerIdentity();goToCourseHub()});
 buildStaticUI();loadSlokaText().catch(err=>console.error(err));preloadVoiceFiles();setSound((()=>{try{return localStorage.getItem('sloka_sound_on')!=='0'}catch{return true}})());
-if(token()){email.required=false;email.value='';email.placeholder='';loginBtn.textContent='Continue'}
+if(token()){email.required=false;email.value='';email.placeholder='';loginBtn.textContent='Continue';validateSavedSession()}else{goToCourseHub()}
 })();

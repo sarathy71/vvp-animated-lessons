@@ -62,3 +62,28 @@ The intro always plays whenever the lesson challenge progress is 0/5. It does no
 
 ### Engine-shared greeting and voice assets
 Appu/Tilli greeting scenes and reusable WAVs live in `engine/assets/`; lesson folders do not need duplicate copies. Intro audio is synchronized to the character/scene currently visible.
+
+## Production Deployment
+
+Build the complete static site locally:
+
+```bash
+python3 build_all.py
+```
+
+Test the generated site locally:
+
+```bash
+cd dist
+python3 -m http.server 8000
+```
+
+Then visit http://localhost:8000/.
+
+Production deployment is triggered by pushing `main`:
+
+```bash
+git push origin main
+```
+
+GitHub Actions builds `dist/` from source and deploys it automatically with GitHub Pages. The intended production domain is https://play.vedantapeetam.org/, but application navigation remains relative so the same build also works at the GitHub project Pages URL.
