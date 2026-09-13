@@ -1,7 +1,7 @@
 # macOS
 .DS_Store
 
-# Generated lesson builds
+# Generated builds
 dist/
 
 # Patch / backup files
@@ -17,17 +17,13 @@ __pycache__/
 .venv/
 venv/
 
-# Environment / secrets
+# Secrets
 .env
 .env.*
 !.env.example
 
-# Node, if added later
+# Node
 node_modules/
-
-# IDE
-.vscode/
-.idea/
 
 # Logs
 *.log
