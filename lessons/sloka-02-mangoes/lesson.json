@@ -15,6 +15,7 @@
     "challengeDays": 5
   },
   "video": "assets/video/lesson.mp4",
+  "previewVideo": "assets/video/preview.mp4",
   "progressIcon": "assets/ui/progress-icon.png",
   "scenes": {
     "intro": [

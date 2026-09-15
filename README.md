@@ -13,11 +13,11 @@ This is the frozen reusable engine for the Appu + Tilli sloka course.
 - same 16:9 player layout and UI placement
 - same Supabase state model
 - same audio event triggers
-- same Preview behavior
+- same lesson-specific preview-video behavior
 
 ## What changes per sloka
 
-Only `lesson.json` and lesson assets: lesson video, challenge caption, 16:9 scenes, progress icon, one plain UTF-8 `assets/sloka/sloka.txt`, and optional reusable voice audio paths. The engine controls sloka rendering and shows it only while the recital video is active (including pauses).
+Only `lesson.json` and lesson assets: a lesson-specific preview video, Guruji recital video, challenge caption, 16:9 scenes, progress icon, one plain UTF-8 `assets/sloka/sloka.txt`, and optional reusable voice audio paths. The engine controls sloka rendering and shows it only while the recital video is active (including pauses).
 
 ## Folders
 
@@ -53,15 +53,21 @@ The engine runs without voice files. When the Cartesia clips are ready, add the 
 
 Every lesson must supply `assets/sloka/sloka.txt` as plain UTF-8 text. Keep intended line breaks in that file; the engine preserves them in its top-of-scene recital overlay. Do not add the text to `lesson.json` or bake it into scene images. The overlay is visible only after the recital video starts and is hidden on `ended`, throughout reward animation, intro, waiting, and Preview.
 
+## Lesson videos
+
+Every lesson supplies two different videos:
+
+- `assets/video/preview.mp4` through `previewVideo`: a 30–45 second lesson hook, problem, and instruction video.
+- `assets/video/lesson.mp4` through `video`: the Guruji recital/practice video.
+
+The preview plays on every lesson entry, independent of saved challenge or daily progress, and the **Watch Preview** button replays it. The engine attempts audible autoplay and displays a one-tap **Start Adventure** fallback when the browser blocks it. Preview playback is informational and never writes progress.
+
 
 ### v1 layout correction
 Daily practice balls are rendered outside the scene image. The 16:9 artwork area contains only the lesson scene plus the circular video inset; no daily-progress tray or placeholders are drawn over the scene.
 
-### Intro replay behavior
-The intro always plays whenever the lesson challenge progress is 0/5. It does not depend on browser history or localStorage.
-
-### Engine-shared greeting and voice assets
-Appu/Tilli greeting scenes and reusable WAVs live in `engine/assets/`; lesson folders do not need duplicate copies. Intro audio is synchronized to the character/scene currently visible.
+### Preview entry behavior
+The lesson-specific preview video replaces the automatic greeting/story slideshow and plays on every lesson entry. Appu/Tilli greeting scenes and reusable WAVs remain available to the engine for other story and reward uses.
 
 ## Production Deployment
 

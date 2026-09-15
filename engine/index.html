@@ -14,10 +14,16 @@
   </header>
   <main class="card">
     <section id="login" class="login">
-      <h2>Who is playing?</h2><div class="subtitle">Enter the email used for your Sloka class.</div>
-      <form id="loginForm"><label for="email">Class email</label><input id="email" type="email" autocomplete="email" required placeholder="parent@example.com"><button id="loginBtn" class="btn primary wide" type="submit">Continue</button><div id="loginErr" class="err"></div></form>
+      <h2 id="loginTitle">Who is playing?</h2><div id="loginSubtitle" class="subtitle">Enter the email used for your Sloka class.</div>
+      <form id="loginForm"><label id="emailLabel" for="email">Class email</label><input id="email" type="email" autocomplete="email" required placeholder="parent@example.com"><button id="loginBtn" class="btn primary wide" type="submit">Continue</button><div id="loginErr" class="err"></div></form>
     </section>
     <section id="game" class="hidden">
+      <div id="previewGate" class="preview-gate hidden" aria-label="Lesson preview">
+        <div class="preview-stage">
+          <video id="previewVideo" preload="auto" playsinline></video>
+          <button id="previewStartButton" class="preview-start hidden" type="button">▶ Start Adventure</button>
+        </div>
+      </div>
       <div class="game-meta"><div id="studentHud" class="greeting">Hi!</div><div id="weekHud" class="meta-count">0 of 5</div></div>
       <div class="viewer"><div class="frame">
         <img id="sceneImg" class="scene-img" alt="Sloka adventure scene">
@@ -31,7 +37,7 @@
       <div class="story-panel"><div id="storyTitle" class="story-title"></div><div id="storySub" class="story-sub"></div></div>
       <div id="weeklyProgress" class="weekly-progress"></div>
       <div class="progress"><div class="proghead"><span>This challenge</span><span id="countLabel">0 / 5</span></div><div id="track" class="track"></div></div>
-      <div class="tools"><div></div><div><button id="previewBtn" class="btn secondary" type="button">▶ Preview full story</button><button id="soundBtn" class="btn secondary" type="button">🔊 Sound on</button><button id="reloadBtn" class="btn secondary" type="button">Reload</button><button id="changeBtn" class="btn secondary" type="button">Change student</button></div></div>
+      <div class="tools"><div></div><div><button id="previewBtn" class="btn secondary" type="button">▶ Watch Preview</button><button id="soundBtn" class="btn secondary" type="button">🔊 Sound on</button><button id="reloadBtn" class="btn secondary" type="button">Reload</button><button id="changeBtn" class="btn secondary" type="button">Change student</button></div></div>
       <audio id="sfxBall" preload="auto"></audio><audio id="sfxVictory" preload="auto"></audio><audio id="voicePlayer" preload="auto"></audio>
     </section>
   </main>

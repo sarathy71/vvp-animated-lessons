@@ -10,6 +10,7 @@
     "title",
     "practice",
     "video",
+    "previewVideo",
     "progressIcon",
     "scenes",
     "audio"
@@ -63,6 +64,9 @@
       "additionalProperties": false
     },
     "video": {
+      "type": "string"
+    },
+    "previewVideo": {
       "type": "string"
     },
     "progressIcon": {
