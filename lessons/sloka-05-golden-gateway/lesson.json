@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-05-golden-gateway",
+  "seriesKey": "appu",
+  "weekNumber": 5,
+  "title": "The Five Jewels of the Golden Gateway",
+  "hubIcon": "💎",
+
+  "headerSubtitle": "Five complete recitals restore one jewel. Restore all five to make the golden gateway shine.",
+  "challengeCaption": "Five special jewels are missing!",
+
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+
+  "progressIcon": "assets/ui/progress-icon.png",
+
+  "challengeAnimation": {
+    "type": "scene-transition",
+    "effect": "jewel-restore",
+    "duration": 1300
+  },
+
+  "phonicsHint": "assets/sloka/phonics.txt",
+
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "The Five Jewels of the Golden Gateway",
+        "sub": "Appu and Tilli discover a beautiful golden gateway."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "The jewels are missing",
+        "sub": "All five special jewel settings are empty."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "Listen and repeat",
+        "sub": "Listen carefully to Guruji and repeat each part."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "Five practices restore one jewel",
+        "sub": "Complete five recitals today to restore the next special jewel."
+      }
+    ],
+
+    "days": [
+      {
+        "src": "assets/scenes/scene_01_day1_red.png",
+        "title": "Day 1 — The ruby returns",
+        "sub": "The first jewel is restored."
+      },
+      {
+        "src": "assets/scenes/scene_02_day2_red_yellow.png",
+        "title": "Day 2 — The golden jewel returns",
+        "sub": "Two special jewels now shine on the gateway."
+      },
+      {
+        "src": "assets/scenes/scene_03_day3_red_yellow_green.png",
+        "title": "Day 3 — The emerald returns",
+        "sub": "Three special jewels are now restored."
+      },
+      {
+        "src": "assets/scenes/scene_04_day4_red_yellow_green_blue.png",
+        "title": "Day 4 — The sapphire returns",
+        "sub": "Only one special jewel is still missing."
+      },
+      {
+        "src": "assets/scenes/scene_05_day5_all_jewels.png",
+        "title": "Day 5 — The purple jewel returns",
+        "sub": "All five special jewels are restored."
+      }
+    ],
+
+    "finale": [
+      {
+        "src": "assets/scenes/scene_05_day5_all_jewels.png",
+        "title": "All five jewels are restored!",
+        "sub": "The Golden Gateway is complete."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "The Golden Gateway shines!",
+        "sub": "Appu and Tilli celebrate as the gateway fills with magical golden light."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "You did it!",
+        "sub": "The Five Jewels of the Golden Gateway challenge is complete."
+      }
+    ]
+  },
+
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}

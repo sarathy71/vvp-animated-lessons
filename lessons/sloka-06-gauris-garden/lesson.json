@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-06-gauris-garden",
+  "seriesKey": "appu",
+  "weekNumber": 6,
+  "title": "The Path to Gauri's Garden",
+  "hubIcon": "🌺",
+  "headerSubtitle": "Five complete recitals light one stepping stone. Light all five to reach Gauri's Garden.",
+  "challengeCaption": "The magical stepping-stone path has lost its glow!",
+  "characters": ["Appu", "Tilli"],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "challengeAnimation": {
+    "type": "scene-transition",
+    "effect": "light",
+    "duration": 1200
+  },
+  "phonicsHint": "assets/sloka/phonics.txt",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "The Path to Gauri's Garden",
+        "sub": "Appu and Tilli discover a beautiful hidden garden."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "The path has lost its glow",
+        "sub": "Five magical stepping stones lead across the garden."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "Listen and repeat",
+        "sub": "Listen carefully to Guruji and repeat each part."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "Five practices light one stone",
+        "sub": "Complete five recitals today to light the next stepping stone."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_01_day1_one_lit.png",
+        "title": "Day 1 — The first stone glows",
+        "sub": "The first magical stepping stone lights the way."
+      },
+      {
+        "src": "assets/scenes/scene_02_day2_two_lit.png",
+        "title": "Day 2 — Two stones glow",
+        "sub": "The path across the garden is beginning to shine."
+      },
+      {
+        "src": "assets/scenes/scene_03_day3_three_lit.png",
+        "title": "Day 3 — Three stones glow",
+        "sub": "Appu and Tilli are halfway to the garden pavilion."
+      },
+      {
+        "src": "assets/scenes/scene_04_day4_four_lit.png",
+        "title": "Day 4 — Four stones glow",
+        "sub": "Only one magical stepping stone remains dark."
+      },
+      {
+        "src": "assets/scenes/scene_05_day5_all_lit.png",
+        "title": "Day 5 — The path is complete",
+        "sub": "All five stepping stones are glowing."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_05_day5_all_lit.png",
+        "title": "All five stones are glowing!",
+        "sub": "The magical path to Gauri's Garden is complete."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "Welcome to Gauri's Garden!",
+        "sub": "Appu and Tilli cross the glowing path and reach the garden."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "You did it!",
+        "sub": "Appu and Tilli celebrate their beautiful garden adventure."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}

@@ -4,6 +4,7 @@
   "seriesKey": "appu",
   "weekNumber": 2,
   "title": "The Five Lost Mangoes",
+  "hubIcon": "🥭",
   "headerSubtitle": "Five complete recitals fill the five balls. Then today's challenge advances once.",
   "challengeCaption": "Tilli dropped her mangoes!",
   "characters": [
@@ -93,6 +94,7 @@
   "audio": {
     "sfx": {
       "ballLand": "assets/audio/ball_land.wav",
+      "dailyComplete": "assets/audio/voice/daily_complete.wav",
       "victory": "assets/audio/victory.wav"
     },
     "voice": {

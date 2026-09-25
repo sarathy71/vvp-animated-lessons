@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "sloka_nonempty_lines": 2,
+  "scene_dimensions": [
+    1672,
+    941
+  ],
+  "scene_count": 7,
+  "expected_jewel_counts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "preview_duration_seconds": 30.953,
+  "master_audio_duration_seconds": 30.954,
+  "lesson_video_duration_seconds": 28.875,
+  "lesson_video_exact_source_copy": true,
+  "collage_assets_packaged": false,
+  "canonical_tilli": "green baby turtle",
+  "schema_version": "1.0"
+}
