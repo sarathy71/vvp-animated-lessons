@@ -75,11 +75,11 @@ h1{max-width:680px;margin:9px 0 14px;font-size:clamp(38px,6vw,72px);line-height:
 h2{margin:5px 0 0;font-size:clamp(28px,4vw,42px);line-height:1.1}
 .journey-count{flex:none;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.65);color:var(--muted);font-size:13px;font-weight:850}
 
-.lesson-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
-.lesson-card{position:relative;display:flex;min-width:0;min-height:190px;flex-direction:column;padding:21px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.62);box-shadow:0 7px 18px rgba(72,63,40,.06)}
+.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.lesson-card{position:relative;display:flex;min-width:0;min-height:248px;flex-direction:column;padding:21px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.62);box-shadow:0 7px 18px rgba(72,63,40,.06)}
 .lesson-card.locked{color:#718087;background:rgba(249,247,239,.58);box-shadow:none}
-.lesson-card.active{grid-column:span 2;min-height:230px;border:2px solid #e8b94f;background:linear-gradient(135deg,#fffdf5 0%,#fff0b9 100%);box-shadow:0 15px 34px rgba(185,126,31,.2);overflow:hidden}
-.lesson-card.active::after{content:"🥭";position:absolute;right:-10px;bottom:-38px;font-size:132px;opacity:.16;transform:rotate(-12deg);pointer-events:none}
+.lesson-card.active{min-height:248px;border:2px solid #e8b94f;background:linear-gradient(135deg,#fffdf5 0%,#fff0b9 100%);box-shadow:0 15px 34px rgba(185,126,31,.2);overflow:hidden}
+.lesson-card.active::after{content:var(--card-watermark,"✦");position:absolute;right:-10px;bottom:-38px;font-size:132px;opacity:.16;transform:rotate(-12deg);pointer-events:none}
 .card-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .sloka-label{font-size:15px;font-weight:950;color:var(--ink)}
 .locked .sloka-label{color:#64747a}
@@ -106,7 +106,6 @@ h2{margin:5px 0 0;font-size:clamp(28px,4vw,42px);line-height:1.1}
   .friend{width:min(45%,150px)}
   .adventures{padding-top:36px}
   .lesson-grid{grid-template-columns:1fr}
-  .lesson-card.active{grid-column:auto}
 }
 
 @media(prefers-reduced-motion:reduce){.start-button{transition:none}}

@@ -4,7 +4,7 @@ const R=window.SLOKA_RUNTIME,L=window.SLOKA_LESSON;
 if(!R||!L){document.body.innerHTML='<p style="padding:30px">Missing runtime or lesson configuration.</p>';return;}
 const API=R.apiBase,DAILY_GOAL=5,CHALLENGE_DAYS=5,TOKEN_KEY='sloka_game_token',NAME_KEY='sloka_game_first_name';
 const $=s=>document.querySelector(s);
-const login=$('#login'),game=$('#game'),form=$('#loginForm'),email=$('#email'),loginBtn=$('#loginBtn'),loginErr=$('#loginErr'),badge=$('#badge'),sceneImg=$('#sceneImg'),studentHud=$('#studentHud'),weekHud=$('#weekHud'),storyTitle=$('#storyTitle'),storySub=$('#storySub'),weeklyProgress=$('#weeklyProgress'),track=$('#track'),countLabel=$('#countLabel'),videoInset=$('#videoInset'),lessonVideo=$('#lessonVideo'),videoIcon=$('#videoIcon'),dailyBalls=$('#dailyBalls'),flyingBall=$('#flyingBall'),toastEl=$('#toast'),introCaption=$('#introCaption'),slokaText=$('#slokaText'),previewGate=$('#previewGate'),previewVideo=$('#previewVideo'),previewStartButton=$('#previewStartButton'),previewBtn=$('#previewBtn'),soundBtn=$('#soundBtn'),reloadBtn=$('#reloadBtn'),changeBtn=$('#changeBtn'),sfxBall=$('#sfxBall'),sfxVictory=$('#sfxVictory'),voicePlayer=$('#voicePlayer');
+const login=$('#login'),game=$('#game'),form=$('#loginForm'),email=$('#email'),loginBtn=$('#loginBtn'),loginErr=$('#loginErr'),badge=$('#badge'),sceneImg=$('#sceneImg'),studentHud=$('#studentHud'),weekHud=$('#weekHud'),storyTitle=$('#storyTitle'),storySub=$('#storySub'),weeklyProgress=$('#weeklyProgress'),track=$('#track'),countLabel=$('#countLabel'),videoInset=$('#videoInset'),lessonVideo=$('#lessonVideo'),videoIcon=$('#videoIcon'),dailyBalls=$('#dailyBalls'),flyingBall=$('#flyingBall'),toastEl=$('#toast'),introCaption=$('#introCaption'),slokaText=$('#slokaText'),previewGate=$('#previewGate'),previewVideo=$('#previewVideo'),previewStartButton=$('#previewStartButton'),previewBtn=$('#previewBtn'),soundBtn=$('#soundBtn'),reloadBtn=$('#reloadBtn'),changeBtn=$('#changeBtn'),sfxBall=$('#sfxBall'),sfxDaily=$('#sfxDaily'),sfxVictory=$('#sfxVictory'),voicePlayer=$('#voicePlayer');
 let weekProgress=0,lastPracticeDate=null,dailyRecitals=0,running=false,saving=false,soundOn=true,playerName='Friend';
 let recitalActive=false,slokaTextReady=false,previewActive=false;
 let audioUnlocked=false,voicePreloadReady=false,voiceAudioContext=null,activeVoiceSource=null;
@@ -112,13 +112,26 @@ async function playFile(path){
  });
 }
 async function playSequence(keys){for(const k of keys){const p=audioPath(k);if(p)await playFile(p)}}
-function playSfx(el,path){if(!soundOn||!path)return;try{el.src=path;el.currentTime=0;el.play().catch(()=>{})}catch{}}
+function playSfx(el,path){if(!soundOn||!path)return Promise.resolve();return new Promise(resolve=>{let settled=false;const finish=()=>{if(settled)return;settled=true;el.onended=null;el.onerror=null;resolve()};try{el.onended=finish;el.onerror=finish;el.src=path;el.currentTime=0;el.play().catch(finish)}catch{finish()}})}
 function setSound(v){soundOn=v;soundBtn.textContent=v?'🔊 Sound on':'🔇 Sound off';lessonVideo.muted=!v;try{localStorage.setItem('sloka_sound_on',v?'1':'0')}catch{}}
 function sceneForProgress(n){if(n<=0)return L.scenes.intro.at(-1);return L.scenes.days[Math.min(n,5)-1]}
 function isIntroLikeScene(s){if(!s)return false;if(s===GREETING_SCENES.appu||s===GREETING_SCENES.tilli)return true;return (L.scenes?.intro||[]).includes(s)}
 function introCaptionText(s){if(!s)return '';if(s===GREETING_SCENES.appu)return GREETING_SCENES.appu.title||'Hi! I am Appu!';if(s===GREETING_SCENES.tilli)return GREETING_SCENES.tilli.title||'Hi! I am Tilli!';return s.sub||s.title||''}
 function showScene(s){if(!s)return;sceneImg.src=s.src;storyTitle.textContent=s.title||'';storySub.textContent=s.sub||'';const cap=isIntroLikeScene(s)?introCaptionText(s):'';if(introCaption){introCaption.textContent=cap;introCaption.classList.toggle('hidden',!cap)}}
-async function loadSlokaText(){const r=await fetch('assets/sloka/sloka.txt');if(!r.ok)throw new Error(`Could not load sloka text (${r.status})`);slokaText.textContent=await r.text();slokaTextReady=true;renderSlokaText()}
+async function loadSlokaText(){
+ const r=await fetch('assets/sloka/sloka.txt');
+ if(!r.ok)throw new Error(`Could not load sloka text (${r.status})`);
+ const lines=(await r.text()).split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
+ slokaText.replaceChildren();
+ for(const line of lines){
+  const el=document.createElement('div');
+  el.className='sloka-line';
+  el.textContent=line;
+  slokaText.appendChild(el);
+ }
+ slokaTextReady=true;
+ renderSlokaText();
+}
 function renderSlokaText(){slokaText.classList.toggle('hidden',!slokaTextReady||!recitalActive||previewActive||running||saving||lessonVideo.ended)}
 function buildStaticUI(){document.title=L.title;$('#lessonTitle').textContent=L.title;$('#lessonSubtitle').textContent=L.headerSubtitle||'';lessonVideo.src=L.video;previewVideo.src=L.previewVideo;weeklyProgress.innerHTML='';track.innerHTML='';for(let i=0;i<5;i++){const d=document.createElement('div');d.className='week-slot';d.innerHTML=`<img alt="" src="${L.progressIcon}"><b>${i+1}</b>`;weeklyProgress.appendChild(d);const s=document.createElement('span');s.className='seg';track.appendChild(s)}dailyBalls.innerHTML='';for(let i=0;i<5;i++){const b=document.createElement('span');b.className='ball-slot';b.dataset.i=String(i);dailyBalls.appendChild(b)}}
 function render(){studentHud.textContent=`Hi, ${playerName}!`;weekHud.textContent=`${weekProgress} of 5`;countLabel.textContent=`${weekProgress} / 5`;[...weeklyProgress.children].forEach((e,i)=>e.classList.toggle('on',i<weekProgress));[...track.children].forEach((e,i)=>e.classList.toggle('on',i<weekProgress));[...dailyBalls.children].forEach((e,i)=>{e.classList.toggle('filled',i<dailyRecitals);e.classList.toggle('next',i===dailyRecitals&&dailyRecitals<5&&!isDayComplete()&&!running&&!saving)});renderVideoState();renderSlokaText()}
@@ -131,7 +144,7 @@ function pendingKey(){return `sloka_pending_recital_v1_${token()||'anon'}_${L.le
 function getPending(){try{return localStorage.getItem(pendingKey())}catch{return null}}
 function setPending(v){try{v?localStorage.setItem(pendingKey(),v):localStorage.removeItem(pendingKey())}catch{}}
 async function recordRecital(eventId){const r=await fetch(`${API}/player-progress`,{method:'POST',headers:{'Content-Type':'application/json','x-game-token':token()},body:JSON.stringify({action:'recital',eventId,seriesKey:L.seriesKey,weekNumber:L.weekNumber,practiceDate:today()})});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Could not save recital');return j}
-async function animateBallTo(slotIndex){const slot=dailyBalls.children[slotIndex];if(!slot)return;const from=videoInset.getBoundingClientRect(),to=slot.getBoundingClientRect();const sx=from.left+from.width/2-24,sy=from.top+from.height/2-24,tx=to.left+to.width/2-24,ty=to.top+to.height/2-24;flyingBall.classList.remove('hidden');flyingBall.style.left=`${sx}px`;flyingBall.style.top=`${sy}px`;const dx=tx-sx,dy=ty-sy;const anim=flyingBall.animate([{transform:'translate(0,0) scale(.9)'},{transform:`translate(${dx*.52}px,${dy*.25-90}px) scale(1.15)`,offset:.52},{transform:`translate(${dx}px,${dy}px) scale(.72)`}],{duration:850,easing:'cubic-bezier(.25,.8,.3,1)'});await anim.finished.catch(()=>{});flyingBall.classList.add('hidden');playSfx(sfxBall,L.audio?.sfx?.ballLand);}
+async function animateBallTo(slotIndex){const slot=dailyBalls.children[slotIndex];if(!slot)return;const from=videoInset.getBoundingClientRect(),to=slot.getBoundingClientRect();const sx=from.left+from.width/2-24,sy=from.top+from.height/2-24,tx=to.left+to.width/2-24,ty=to.top+to.height/2-24;flyingBall.classList.remove('hidden');flyingBall.style.left=`${sx}px`;flyingBall.style.top=`${sy}px`;const dx=tx-sx,dy=ty-sy;const anim=flyingBall.animate([{transform:'translate(0,0) scale(.9)'},{transform:`translate(${dx*.52}px,${dy*.25-90}px) scale(1.15)`,offset:.52},{transform:`translate(${dx}px,${dy}px) scale(.72)`}],{duration:850,easing:'cubic-bezier(.25,.8,.3,1)'});await anim.finished.catch(()=>{});flyingBall.classList.add('hidden');await playSfx(sfxBall,L.audio?.sfx?.ballLand);}
 async function handleRecitalComplete(){
  if(saving||running||weekProgress>=5||isDayComplete())return;
  saving=true;render();
@@ -146,6 +159,7 @@ async function handleRecitalComplete(){
   const rawDaily=Number(j?.daily?.recitalCount??beforeDaily);
   const newDaily=Math.max(beforeDaily,Math.min(5,Number.isFinite(rawDaily)?rawDaily:beforeDaily));
   const completedFive=Boolean(j?.daily?.completed)&&newDaily>=5;
+  const completedNow=completedFive&&beforeDaily===4&&newDaily===5;
   const rawWeek=Number(j?.progress?.practice_count??beforeWeek);
   const proposedWeek=Number.isFinite(rawWeek)?rawWeek:beforeWeek;
 
@@ -153,7 +167,7 @@ async function handleRecitalComplete(){
    await animateBallTo(newDaily-1);
    dailyRecitals=newDaily;
    render();
-   await playSequence(['recitalCheer']);
+   if(completedNow){await sleep(275);await playSfx(sfxDaily,L.audio?.sfx?.dailyComplete||'assets/audio/voice/daily_complete.wav')}
   }else{
    dailyRecitals=newDaily;
    render();
@@ -170,7 +184,6 @@ async function handleRecitalComplete(){
    lastPracticeDate=j.progress?.last_practice_date||lastPracticeDate;
    showScene(sceneForProgress(weekProgress));
    render();
-   await playSequence(['dailyComplete']);
    if(weekProgress>=5){
     playSfx(sfxVictory,L.audio?.sfx?.victory);
     for(const s of L.scenes.finale){showScene(s);await sleep(1200)}

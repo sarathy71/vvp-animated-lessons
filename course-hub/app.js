@@ -14,34 +14,37 @@
   const entryError=document.querySelector('#entryError');
   const playerGreeting=document.querySelector('#playerGreeting');
   const switchStudent=document.querySelector('#switchStudent');
-  const lessons=Array.from({length:15},(_,index)=>{
-    const number=index+1;
-    return number===2
-      ?{number,title:'The Five Lost Mangoes',available:true}
-      :{number,title:'Coming Soon',available:false};
-  });
+  let manifest=[];
 
-  for(const lesson of lessons){
-    const card=document.createElement('article');
-    card.className=`lesson-card ${lesson.available?'active':'locked'}`;
+  function renderLessons(){
+    const availableByWeek=new Map(manifest.map(lesson=>[lesson.weekNumber,lesson]));
+    grid.replaceChildren();
+    for(let number=1;number<=15;number++){
+      const available=availableByWeek.get(number);
+      const card=document.createElement('article');
+      card.className=`lesson-card ${available?'active':'locked'}`;
 
-    if(lesson.available){
-      card.innerHTML=`
-        <div class="card-top"><span class="sloka-label">Sloka ${lesson.number}</span><span class="state">Available</span></div>
-        <div class="card-icon" aria-hidden="true">🥭</div>
-        <h3 class="lesson-title">${lesson.title}</h3>
-        <button class="start-button" type="button">Start Adventure</button>`;
-      card.querySelector('.start-button').addEventListener('click',()=>{
-        window.location.href='../sloka-02-mangoes/';
-      });
-    }else{
-      card.innerHTML=`
-        <div class="card-top"><span class="sloka-label">Sloka ${lesson.number}</span><span class="state">Coming Soon</span></div>
-        <div class="card-icon" aria-hidden="true">✦</div>
-        <p class="coming-message">A new adventure is on its way!</p>`;
-      card.setAttribute('aria-label',`Sloka ${lesson.number}, coming soon`);
+      if(available){
+        card.innerHTML=`
+          <div class="card-top"><span class="sloka-label"></span><span class="state">Available</span></div>
+          <div class="card-icon" aria-hidden="true"></div>
+          <h3 class="lesson-title"></h3>
+          <button class="start-button" type="button">Start Adventure</button>`;
+        card.querySelector('.card-icon').textContent=available.icon||'✦';
+        card.querySelector('.sloka-label').textContent=available.displayLabel||`Sloka ${number}`;
+        card.querySelector('.lesson-title').textContent=available.title;
+        card.querySelector('.start-button').addEventListener('click',()=>{
+          window.location.href=available.href;
+        });
+      }else{
+        card.innerHTML=`
+          <div class="card-top"><span class="sloka-label">Sloka ${number}</span><span class="state">Coming Soon</span></div>
+          <div class="card-icon" aria-hidden="true">✦</div>
+          <p class="coming-message">A new adventure is on its way!</p>`;
+        card.setAttribute('aria-label',`Sloka ${number}, coming soon`);
+      }
+      grid.appendChild(card);
     }
-    grid.appendChild(card);
   }
 
   function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
@@ -60,7 +63,8 @@
     adventures.classList.remove('hidden');
   }
   async function validateToken(savedToken){
-    const q=new URLSearchParams({seriesKey:'appu',weekNumber:'2',practiceDate:today()});
+    const validationLesson=manifest[0];
+    const q=new URLSearchParams({seriesKey:validationLesson.seriesKey,weekNumber:String(validationLesson.weekNumber),practiceDate:today()});
     return fetch(`${R.apiBase}/player-progress?${q}`,{headers:{'x-game-token':savedToken}});
   }
   async function restoreSession(){
@@ -117,6 +121,27 @@
     emailInput.focus();
   });
 
-  if(!R?.apiBase){showEntry("We couldn't connect right now. Please try again.")}
-  else restoreSession();
+  async function initialize(){
+    if(!R?.apiBase){showEntry("We couldn't connect right now. Please try again.");return}
+    try{
+      const response=await fetch('lessons-manifest.json',{cache:'no-cache'});
+      if(!response.ok)throw new Error(`Manifest request failed: ${response.status}`);
+      const data=await response.json();
+      if(!Array.isArray(data))throw new Error('Lesson manifest is not an array.');
+      manifest=data.slice().sort((a,b)=>a.weekNumber-b.weekNumber);
+    }catch(error){
+      console.warn('Could not load lesson manifest.',error);
+      showEntry("We couldn't load the adventures right now. Please try again.");
+      return;
+    }
+    if(manifest.length===0){
+      showEntry('No adventures are available yet. Please come back soon!');
+      continueButton.disabled=true;
+      return;
+    }
+    renderLessons();
+    restoreSession();
+  }
+
+  initialize();
 })();

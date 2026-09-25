@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-03-sleeping-lotuses",
+  "seriesKey": "appu",
+  "weekNumber": 3,
+  "title": "The Five Sleeping Lotuses",
+  "hubIcon": "🪷",
+  "headerSubtitle": "Five complete recitals wake one lotus. Wake all five to make the pond bloom.",
+  "challengeCaption": "Five lotus flowers are sleeping!",
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_01_intro_pond.jpg",
+        "title": "The lotus pond",
+        "sub": "Appu and Tilli discover five sleeping lotuses."
+      },
+      {
+        "src": "assets/scenes/scene_02_intro_question.jpg",
+        "title": "Why are they sleeping?",
+        "sub": "Tilli wonders how they can help."
+      },
+      {
+        "src": "assets/scenes/scene_03_intro_problem.jpg",
+        "title": "Five sleeping lotuses",
+        "sub": "All five flowers are waiting to wake up."
+      },
+      {
+        "src": "assets/scenes/scene_04_intro_listen_repeat.jpg",
+        "title": "Listen and repeat",
+        "sub": "Listen to Guruji and repeat each word."
+      },
+      {
+        "src": "assets/scenes/scene_05_intro_goal.jpg",
+        "title": "Five practices",
+        "sub": "Practice five times today to wake one lotus."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_06_day1_lotus.jpg",
+        "title": "Day 1 — The first lotus wakes",
+        "sub": "One sleeping lotus begins to glow."
+      },
+      {
+        "src": "assets/scenes/scene_07_day2_lotus.jpg",
+        "title": "Day 2 — Two lotuses awake",
+        "sub": "Two lotus flowers are waking."
+      },
+      {
+        "src": "assets/scenes/scene_08_day3_lotus.jpg",
+        "title": "Day 3 — Three lotuses awake",
+        "sub": "The pond is becoming brighter."
+      },
+      {
+        "src": "assets/scenes/scene_09_day4_lotus.jpg",
+        "title": "Day 4 — Four lotuses awake",
+        "sub": "Only one sleeping lotus remains."
+      },
+      {
+        "src": "assets/scenes/scene_10_day5_lotus.jpg",
+        "title": "Day 5 — All five are awake",
+        "sub": "The last lotus wakes up."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_11_final_all_bloom.jpg",
+        "title": "The pond blooms!",
+        "sub": "All five lotuses open beautifully."
+      },
+      {
+        "src": "assets/scenes/scene_12_final_celebrate.jpg",
+        "title": "You did it!",
+        "sub": "Appu and Tilli celebrate the glowing pond."
+      },
+      {
+        "src": "assets/scenes/scene_13_final_complete.jpg",
+        "title": "Hooray!",
+        "sub": "Sleeping Lotuses challenge complete."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "dailyComplete": "assets/audio/voice/daily_complete.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}

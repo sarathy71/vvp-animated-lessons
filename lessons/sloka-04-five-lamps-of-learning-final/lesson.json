@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-04-five-lamps-of-learning",
+  "seriesKey": "appu",
+  "weekNumber": 4,
+  "title": "The Five Lamps of Learning",
+  "hubIcon": "🪔",
+  "headerSubtitle": "Five complete recitals light one lamp. Light all five to fill the hall with the light of learning.",
+  "challengeCaption": "Five golden lamps are waiting to shine!",
+  "characters": ["Appu", "Tilli"],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "challengeAnimation": {
+    "type": "scene-transition",
+    "effect": "light",
+    "duration": 1200
+  },
+  "phonicsHint": "assets/sloka/phonics.txt",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "The Five Lamps of Learning",
+        "sub": "Appu and Tilli find five golden lamps in a dim learning hall."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "The lamps are dark",
+        "sub": "Can we help them shine again?"
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "Listen and repeat",
+        "sub": "Listen carefully to Guruji and repeat each part."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "Five practices light one lamp",
+        "sub": "Complete five recitals today to light the next golden lamp."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_01_day1_one_lit.png",
+        "title": "Day 1 — The first lamp shines",
+        "sub": "One golden lamp is glowing."
+      },
+      {
+        "src": "assets/scenes/scene_02_day2_two_lit.png",
+        "title": "Day 2 — Two lamps shine",
+        "sub": "Two lamps now light the hall."
+      },
+      {
+        "src": "assets/scenes/scene_03_day3_three_lit.png",
+        "title": "Day 3 — Three lamps shine",
+        "sub": "The light of learning is growing."
+      },
+      {
+        "src": "assets/scenes/scene_04_day4_four_lit.png",
+        "title": "Day 4 — Four lamps shine",
+        "sub": "Only one golden lamp remains dark."
+      },
+      {
+        "src": "assets/scenes/scene_05_day5_all_lit.png",
+        "title": "Day 5 — All five lamps shine",
+        "sub": "The final lamp is lit."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_05_day5_all_lit.png",
+        "title": "All five lamps are glowing!",
+        "sub": "The learning hall is filled with golden light."
+      },
+      {
+        "src": "assets/scenes/scene_06_finale.png",
+        "title": "You did it!",
+        "sub": "Appu and Tilli celebrate the light of learning."
+      },
+      {
+        "src": "assets/scenes/scene_06_finale.png",
+        "title": "Hooray!",
+        "sub": "The Five Lamps of Learning challenge is complete."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}
