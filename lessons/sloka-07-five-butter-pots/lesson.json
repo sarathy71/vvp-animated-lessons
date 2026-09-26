@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-07-five-butter-pots",
+  "seriesKey": "appu",
+  "weekNumber": 7,
+  "title": "The Five Butter Pots of Vrindavan",
+  "hubIcon": "🦚",
+  "headerSubtitle": "Five complete recitals restore one butter pot. Restore all five for the Vrindavan celebration.",
+  "challengeCaption": "Five special butter pots are missing!",
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "challengeAnimation": {
+    "type": "scene-transition",
+    "effect": "restore",
+    "duration": 1300
+  },
+  "phonicsHint": "assets/sloka/phonics.txt",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "The Five Butter Pots of Vrindavan",
+        "sub": "Appu and Tilli arrive in Vrindavan for a special celebration."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "The butter pots are missing",
+        "sub": "All five decorated pedestals are empty."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "Listen and repeat",
+        "sub": "Listen carefully to Guruji and repeat each part."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_empty.png",
+        "title": "Five practices restore one pot",
+        "sub": "Complete five recitals today to restore the next butter pot."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_01_day1_one_pot.png",
+        "title": "Day 1 — The first butter pot returns",
+        "sub": "One special butter pot is restored."
+      },
+      {
+        "src": "assets/scenes/scene_02_day2_two_pots.png",
+        "title": "Day 2 — Two butter pots",
+        "sub": "Two butter pots are ready for the celebration."
+      },
+      {
+        "src": "assets/scenes/scene_03_day3_three_pots.png",
+        "title": "Day 3 — Three butter pots",
+        "sub": "Three special butter pots are restored."
+      },
+      {
+        "src": "assets/scenes/scene_04_day4_four_pots.png",
+        "title": "Day 4 — Four butter pots",
+        "sub": "Only one butter pot is still missing."
+      },
+      {
+        "src": "assets/scenes/scene_05_day5_all_pots.png",
+        "title": "Day 5 — All five butter pots",
+        "sub": "The fifth butter pot is restored."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_05_day5_all_pots.png",
+        "title": "All five butter pots are restored!",
+        "sub": "The Vrindavan celebration is ready."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "The celebration begins!",
+        "sub": "Appu and Tilli celebrate beside all five butter pots."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "You did it!",
+        "sub": "The Five Butter Pots of Vrindavan challenge is complete."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}
