@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-08-path-to-ayodhya",
+  "seriesKey": "appu",
+  "weekNumber": 8,
+  "title": "The Path of Light to Ayodhya",
+  "hubIcon": "🏹",
+  "headerSubtitle": "Five complete recitals light one lantern. Light all five to illuminate the path to Ayodhya.",
+  "challengeCaption": "The path to Ayodhya has gone dark!",
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "challengeAnimation": {
+    "type": "scene-transition",
+    "effect": "light",
+    "duration": 1200
+  },
+  "phonicsHint": "assets/sloka/phonics.txt",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "The Path of Light to Ayodhya",
+        "sub": "Appu and Tilli discover a beautiful path leading to Rama and Sita."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "The path has gone dark",
+        "sub": "All five special lanterns are waiting to shine."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "Listen and repeat",
+        "sub": "Listen carefully to Guruji and repeat each part."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_dark.png",
+        "title": "Five practices light one lantern",
+        "sub": "Complete five recitals today to light the next lantern."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_01_day1_one_lit.png",
+        "title": "Day 1 — The first lantern shines",
+        "sub": "One lantern lights the path."
+      },
+      {
+        "src": "assets/scenes/scene_02_day2_two_lit.png",
+        "title": "Day 2 — Two lanterns shine",
+        "sub": "The path grows brighter."
+      },
+      {
+        "src": "assets/scenes/scene_03_day3_three_lit.png",
+        "title": "Day 3 — Three lanterns shine",
+        "sub": "Three lanterns now guide the way."
+      },
+      {
+        "src": "assets/scenes/scene_04_day4_four_lit.png",
+        "title": "Day 4 — Four lanterns shine",
+        "sub": "Only one lantern remains dark."
+      },
+      {
+        "src": "assets/scenes/scene_05_day5_all_lit.png",
+        "title": "Day 5 — All five lanterns shine",
+        "sub": "The whole path to Ayodhya is illuminated."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_05_day5_all_lit.png",
+        "title": "All five lanterns are shining!",
+        "sub": "The path to Ayodhya is complete."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "The path shines!",
+        "sub": "Appu and Tilli dance with joy."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "You did it!",
+        "sub": "The Path of Light to Ayodhya challenge is complete."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}
