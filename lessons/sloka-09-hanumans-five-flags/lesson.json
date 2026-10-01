@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "lessonId": "sloka-09-hanumans-five-flags",
+  "seriesKey": "appu",
+  "weekNumber": 9,
+  "title": "Hanuman's Five Saffron Flags",
+  "hubIcon": "🚩",
+  "headerSubtitle": "Five complete recitals raise one saffron flag. Raise all five to prepare Hanuman's temple courtyard.",
+  "challengeCaption": "Five special saffron flags are missing!",
+  "characters": [
+    "Appu",
+    "Tilli"
+  ],
+  "practice": {
+    "recitalsPerDay": 5,
+    "challengeDays": 5
+  },
+  "previewVideo": "assets/video/preview.mp4",
+  "video": "assets/video/lesson.mp4",
+  "progressIcon": "assets/ui/progress-icon.png",
+  "challengeAnimation": {
+    "type": "scene-transition",
+    "effect": "restore",
+    "duration": 1200
+  },
+  "phonicsHint": "assets/sloka/phonics.txt",
+  "scenes": {
+    "intro": [
+      {
+        "src": "assets/scenes/scene_00_all_flags_missing.png",
+        "title": "Hanuman's Five Saffron Flags",
+        "sub": "Appu and Tilli arrive at Hanuman's beautiful temple."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_flags_missing.png",
+        "title": "The special flags are missing",
+        "sub": "Five empty flagpoles are waiting in the courtyard."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_flags_missing.png",
+        "title": "Listen and repeat",
+        "sub": "Listen carefully to Guruji and repeat each part."
+      },
+      {
+        "src": "assets/scenes/scene_00_all_flags_missing.png",
+        "title": "Five practices raise one flag",
+        "sub": "Complete five recitals today to raise the next saffron flag."
+      }
+    ],
+    "days": [
+      {
+        "src": "assets/scenes/scene_01_day1_one_flag.png",
+        "title": "Day 1 — The first flag rises",
+        "sub": "One special saffron flag is flying."
+      },
+      {
+        "src": "assets/scenes/scene_02_day2_two_flags.png",
+        "title": "Day 2 — Two flags fly",
+        "sub": "Two saffron flags now fly in the courtyard."
+      },
+      {
+        "src": "assets/scenes/scene_03_day3_three_flags.png",
+        "title": "Day 3 — Three flags fly",
+        "sub": "Three special flags are now raised."
+      },
+      {
+        "src": "assets/scenes/scene_04_day4_four_flags.png",
+        "title": "Day 4 — Four flags fly",
+        "sub": "Only one flagpole is still empty."
+      },
+      {
+        "src": "assets/scenes/scene_05_day5_all_flags.png",
+        "title": "Day 5 — All five flags fly",
+        "sub": "The fifth saffron flag is raised."
+      }
+    ],
+    "finale": [
+      {
+        "src": "assets/scenes/scene_05_day5_all_flags.png",
+        "title": "All five flags are flying!",
+        "sub": "Hanuman's temple courtyard is ready."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "The celebration begins!",
+        "sub": "Appu and Tilli dance with joy."
+      },
+      {
+        "src": "assets/scenes/scene_finale.png",
+        "title": "You did it!",
+        "sub": "Hanuman's Five Saffron Flags challenge is complete."
+      }
+    ]
+  },
+  "audio": {
+    "sfx": {
+      "ballLand": "assets/audio/ball_land.wav",
+      "victory": "assets/audio/victory.wav"
+    },
+    "voice": {
+      "appuIntro": "",
+      "tilliIntro": "",
+      "appuHelp": "",
+      "tilliInstruction": "",
+      "recitalCheer": "",
+      "dailyComplete": "",
+      "appuChallengeComplete": "",
+      "tilliThanks": ""
+    }
+  }
+}
